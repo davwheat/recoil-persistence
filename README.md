@@ -13,14 +13,17 @@ Persist your Recoil states between site/app loads. Written in Typescript with de
     - [`persistentAtom`](#persistentatom)
       - [`atomOptions`](#atomoptions)
       - [`persistOptions`](#persistoptions)
+      - [Examples](#examples)
     - [`storageEffect`](#storageeffect)
+      - [Examples](#examples-1)
   - [React Native](#react-native)
     - [`persistentAtom`](#persistentatom-1)
       - [`atomOptions`](#atomoptions-1)
       - [`persistOptions`](#persistoptions-1)
       - [`storage`](#storage)
-      - [Examples](#examples)
+      - [Examples](#examples-2)
     - [`storageEffect`](#storageeffect-1)
+      - [Examples](#examples-3)
 
 ## API
 
@@ -58,6 +61,8 @@ Accepts two parameters: `atomOptions` and `persistOptions`.
 
 **We don't perform any validation on the returned string from storage.** Please do this yourself via the `validator` option as users can easily edit LocalStorage and SessionStorage.
 
+##### Examples
+
 ```ts
 // Default options
 const todoListState = persistentAtom({
@@ -92,6 +97,8 @@ If you don't want to use the atom wrapper for some reason, you can use this inst
 - `validator` (Optional) A function to check that the data from Storage is valid.
 
 **We don't perform any validation on the returned string from storage.** Please do this yourself via the `validator` parameter as users can easily edit LocalStorage and SessionStorage.
+
+##### Examples
 
 ```ts
 // Stores the value of state in LocalStorage under `my-state-in-LS` key
@@ -193,6 +200,8 @@ If you don't want to use the atom wrapper for some reason, you can use this inst
 - `validator` (Optional) A function to check that the data from Storage is valid.
 
 **We don't perform any validation on the returned string from storage.** Please do this yourself via the `validator` parameter as users can easily edit LocalStorage and SessionStorage.
+
+##### Examples
 
 ```ts
 // Stores the value of state in LocalStorage under `my-state-in-LS` key
