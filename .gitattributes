@@ -14,5 +14,5 @@
 *.png binary
 *.jpg binary
 
-lib/* linguist-vendored=true
-dist-types/* linguist-vendored=true
+lib/* linguist-generated
+dist-types/* linguist-generated
