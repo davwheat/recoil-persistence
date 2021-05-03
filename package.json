@@ -1,23 +1,23 @@
 {
   "name": "recoil-persistence",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
   "author": "David Wheatley <hi@davwheat.dev> (https://davwheat.dev)",
   "license": "MIT",
   "types": "./lib/esm/index.d.ts",
   "exports": {
-    "./": {
-      "import": "./lib/esm/",
-      "require": "./lib/cjs/"
+    "./*": {
+      "import": "./lib/esm/*",
+      "require": "./lib/cjs/*"
     },
-    "./react/": {
-      "import": "./lib/esm/react/",
-      "require": "./lib/cjs/react/"
+    "./react/*": {
+      "import": "./lib/esm/react/*",
+      "require": "./lib/cjs/react/*"
     },
-    "./react-native/": {
-      "import": "./lib/esm/react-native/",
-      "require": "./lib/cjs/react-native/"
+    "./react-native/*": {
+      "import": "./lib/esm/react-native/*",
+      "require": "./lib/cjs/react-native/*"
     }
   },
   "typesVersions": {
