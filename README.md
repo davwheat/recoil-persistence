@@ -6,6 +6,10 @@ Persist your Recoil states between site/app loads. Written in Typescript with de
 
 **Supports React and React Native.**
 
+Please note that Recoil Atom Effects are experimental and the API is still evolving, hence they are used as `effects_UNSTABLE`. Due to the fact that the syntax could completely change at any moment, this repo might not always work with the latest verison of recoil
+
+**Current known working version of Recoil:** `0.2.0`
+
 ## Contents <!-- omit in toc -->
 
 - [API](#api)
