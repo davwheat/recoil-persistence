@@ -1,6 +1,6 @@
 {
   "name": "recoil-persistence",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "private": true,
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
@@ -9,12 +9,10 @@
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "build": "tsc",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
-    "prepublishOnly": "yarn clean && yarn build",
-    "clean": "cross-env rimraf lib"
+    "clean": "cross-env rimraf lib publish-tmp",
+    "pub": "node ./publish.js"
   },
   "devDependencies": {
     "@expo/spawn-async": "^1.5.0",
