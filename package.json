@@ -1,51 +1,37 @@
 {
   "name": "recoil-persistence",
-  "version": "0.1.4",
+  "version": "0.1.5",
+  "private": true,
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
   "author": "David Wheatley <hi@davwheat.dev> (https://davwheat.dev)",
   "license": "MIT",
-  "types": "./lib/esm/index.d.ts",
-  "exports": {
-    "./*": {
-      "import": "./lib/esm/*",
-      "require": "./lib/cjs/*"
-    },
-    "./react/*": {
-      "import": "./lib/esm/react/*",
-      "require": "./lib/cjs/react/*"
-    },
-    "./react-native/*": {
-      "import": "./lib/esm/react-native/*",
-      "require": "./lib/cjs/react-native/*"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "react-native": [
-        "dist-types/react-native"
-      ],
-      "react": [
-        "dist-types/react"
-      ]
-    }
-  },
+  "types": "./lib/index.d.ts",
+  "main": "./lib/index.js",
   "scripts": {
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir lib/cjs",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn clean && yarn build",
+    "clean": "cross-env rimraf lib"
   },
   "devDependencies": {
+    "@expo/spawn-async": "^1.5.0",
     "@react-native-async-storage/async-storage": "^1.15.0",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/react-native": "^0.64.4",
+    "chalk": "^4.1.1",
+    "cross-env": "^7.0.3",
+    "fs-extra": "^10.0.0",
+    "ora": "^5.4.0",
     "prettier": "^2.2.1",
+    "prompt-sync": "^4.2.0",
     "react": "^17.0.2",
     "react-native": "^0.64.0",
     "recoil": "^0.2.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
