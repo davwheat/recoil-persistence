@@ -1,6 +1,6 @@
 {
   "name": "recoil-persistence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
   "author": "David Wheatley <hi@davwheat.dev> (https://davwheat.dev)",
@@ -38,6 +38,7 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.0",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/react-native": "^0.64.4",
@@ -45,8 +46,7 @@
     "react": "^17.0.2",
     "react-native": "^0.64.0",
     "recoil": "^0.2.0",
-    "typescript": "^4.2.4",
-    "@react-native-async-storage/async-storage": "^1.15.0"
+    "typescript": "^4.2.4"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0",
