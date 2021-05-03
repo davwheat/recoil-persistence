@@ -1,0 +1,59 @@
+{
+  "name": "recoil-persistence",
+  "version": "0.1.0",
+  "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
+  "repository": "https://github.com/davwheat/recoil-persistence",
+  "author": "David Wheatley <hi@davwheat.dev> (https://davwheat.dev)",
+  "license": "MIT",
+  "types": "./lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./react": {
+      "import": "./lib/esm/react/index.js",
+      "require": "./lib/cjs/react/index.js"
+    },
+    "./react-native": {
+      "import": "./lib/esm/react-native/index.js",
+      "require": "./lib/cjs/react-native/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "react-native": [
+        "dist-types/react-native"
+      ],
+      "react": [
+        "dist-types/react"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json}\"",
+    "prepublishOnly": "yarn build"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-native": "^0.64.4",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-native": "^0.64.0",
+    "recoil": "^0.2.0",
+    "typescript": "^4.2.4",
+    "@react-native-async-storage/async-storage": "^1.15.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0",
+    "react-native": "^0.63.0 || ^0.64.0",
+    "recoil": "^0.2.0"
+  },
+  "optionalDependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.0"
+  }
+}
