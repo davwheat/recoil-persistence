@@ -1,6 +1,6 @@
 # Recoil Persistence <!-- omit in toc -->
 
-[![](https://img.shields.io/badge/-Sponsor-fafbfc?logo=GitHub%20Sponsors)](https://github.com/sponsors/davwheat) ![](https://img.shields.io/github/package-json/dependency-version/davwheat/recoil-persistence/recoil)
+[![](https://img.shields.io/badge/-Sponsor-fafbfc?logo=GitHub%20Sponsors)](https://github.com/sponsors/davwheat) ![](https://img.shields.io/badge/recoil-0.2.0-brightgreen)
 
 Persist your Recoil states between site/app loads. Written in Typescript with detailed type declarations.
 
