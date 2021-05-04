@@ -13,7 +13,7 @@ export interface IRNStorageSystem {
   /**
    * Async function to set an item's value in the storage system.
    */
-  getItem: (key: string) => Promise<string>
+  getItem: (key: string) => Promise<string | null>
 
   /**
    * Async function to remove an item's entry from the storage system.
