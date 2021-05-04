@@ -62,14 +62,14 @@ export function storageEffect<T>(key: string, storage?: IRNStorageSystem, valida
       loadPersisted(storage)
     } else {
       import('@react-native-async-storage/async-storage')
+        .then(asyncStorage => {
+          loadPersisted(asyncStorage.default as IRNStorageSystem)
+        })
         .catch(e => {
           console.error(
             "Looks like you didn't pass a storage system to storageEffect or persistentAtom. You either need to pass one, or install `@react-native-async-storage/async-storage`.",
           )
           console.error(e)
-        })
-        .then(asyncStorage => {
-          loadPersisted((asyncStorage as unknown) as IRNStorageSystem)
         })
     }
 
