@@ -40,7 +40,7 @@ export interface IRNStorageSystem {
  *            effects_UNSTABLE: [storageEffect<StateType>('my-state-in-LS')]
  *          })
  */
-export function storageEffect<T>(key: string, storage?: IRNStorageSystem, validator: (data: object) => boolean = () => true): AtomEffect<T> {
+export function storageEffect<T>(key: string, storage?: IRNStorageSystem, validator: (data: unknown) => boolean = () => true): AtomEffect<T> {
   return ({ setSelf, onSet }) => {
     const loadPersisted = async (storageSystem: IRNStorageSystem) => {
       try {
@@ -75,9 +75,36 @@ export function storageEffect<T>(key: string, storage?: IRNStorageSystem, valida
 
     onSet((newValue: T) => {
       if (newValue instanceof DefaultValue) {
-        storage && storage.removeItem(key)
+        if (storage) {
+          storage.removeItem(key)
+        } else {
+          import('@react-native-async-storage/async-storage')
+            .then(asyncStorage => {
+              asyncStorage.default.removeItem(key)
+            })
+            .catch(e => {
+              console.error(
+                "Looks like you didn't pass a storage system to storageEffect or persistentAtom. You either need to pass one, or install `@react-native-async-storage/async-storage`.",
+              )
+              console.error(e)
+            })
+        }
       } else {
         storage && storage.setItem(key, JSON.stringify(newValue))
+        if (storage) {
+          storage.setItem(key, JSON.stringify(newValue))
+        } else {
+          import('@react-native-async-storage/async-storage')
+            .then(asyncStorage => {
+              asyncStorage.default.setItem(key, JSON.stringify(newValue))
+            })
+            .catch(e => {
+              console.error(
+                "Looks like you didn't pass a storage system to storageEffect or persistentAtom. You either need to pass one, or install `@react-native-async-storage/async-storage`.",
+              )
+              console.error(e)
+            })
+        }
       }
     })
   }
