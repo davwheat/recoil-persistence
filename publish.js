@@ -7,6 +7,8 @@
  * This is not possible otherwise.
  */
 
+const IS_WINDOWS = process.platform === 'win32'
+
 const fs = require('fs-extra')
 const path = require('path')
 const ora = require('ora')
@@ -55,7 +57,7 @@ async function main() {
 
   divider('Build')
 
-  const build = spawnAsync('yarn.cmd', ['build'])
+  const build = spawnAsync(IS_WINDOWS ? 'yarn.cmd' : 'yarn', ['build'])
   ora.promise(build, 'Transpiling Typescript')
   await build
 
@@ -116,7 +118,7 @@ async function main() {
 
   process.chdir(tempFolder)
 
-  const publish = spawnAsync('yarn.cmd', ['publish', OTP ? `--otp` : '', OTP ? OTP : '', '--tag', newVer])
+  const publish = spawnAsync(IS_WINDOWS ? 'yarn.cmd' : 'yarn', ['publish', OTP ? `--otp` : '', OTP ? OTP : '', '--tag', newVer])
   ora.promise(publish, 'Publishing package')
   await publish
 
