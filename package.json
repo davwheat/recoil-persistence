@@ -1,6 +1,6 @@
 {
   "name": "recoil-persistence",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "private": true,
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
