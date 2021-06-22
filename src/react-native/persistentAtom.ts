@@ -1,7 +1,7 @@
 import { AtomOptions, atom, RecoilState } from 'recoil'
 import { IRNStorageSystem, storageEffect } from './storageEffect'
 
-interface IRNPersistOptions {
+interface IRNPersistOptions<T> {
   /**
    * (Optional) Key to use in storage. Defaults to the atom's key.
    */
@@ -21,7 +21,7 @@ interface IRNPersistOptions {
    *   return true
    * }
    */
-  validator?: (data: object) => boolean
+  validator?: (data: T) => boolean
 }
 
 /**
@@ -65,7 +65,7 @@ interface IRNPersistOptions {
  *            myStorageSystem
  *          )
  */
-export function persistentAtom<T>(atomOptions: AtomOptions<T>, persistOptions?: IRNPersistOptions, storage?: IRNStorageSystem): RecoilState<T> {
+export function persistentAtom<T>(atomOptions: AtomOptions<T>, persistOptions?: IRNPersistOptions<T>, storage?: IRNStorageSystem): RecoilState<T> {
   const key = persistOptions?.storageKey || atomOptions.key
 
   if (typeof key !== 'string') {

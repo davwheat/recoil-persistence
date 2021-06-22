@@ -1,7 +1,7 @@
 import { AtomOptions, atom, RecoilState } from 'recoil'
 import { storageEffect } from './storageEffect'
 
-interface IRPersistOptions {
+interface IRPersistOptions<T> {
   /**
    * (Optional) Key to use in storage. Defaults to the atom's key.
    */
@@ -25,7 +25,7 @@ interface IRPersistOptions {
    *   return true
    * }
    */
-  validator?: (data: object) => boolean
+  validator?: (data: T) => boolean
 }
 
 /**
@@ -61,7 +61,7 @@ interface IRPersistOptions {
  *            },
  *          )
  */
-export function persistentAtom<T>(atomOptions: AtomOptions<T>, persistOptions?: IRPersistOptions): RecoilState<T> {
+export function persistentAtom<T>(atomOptions: AtomOptions<T>, persistOptions?: IRPersistOptions<T>): RecoilState<T> {
   const key = persistOptions?.storageKey || atomOptions.key
 
   if (typeof key !== 'string') {
