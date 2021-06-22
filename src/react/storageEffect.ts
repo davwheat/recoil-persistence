@@ -23,7 +23,7 @@ import isSSR from './isSSR'
 export function storageEffect<T>(
   key: string,
   storage: Storage | undefined = isSSR() ? undefined : localStorage,
-  validator: (data: object) => boolean = () => true,
+  validator: (data: T) => boolean = () => true,
 ): AtomEffect<T> {
   return ({ setSelf, onSet }) => {
     const savedValue = storage ? storage.getItem(key) : null

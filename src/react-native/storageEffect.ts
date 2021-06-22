@@ -40,7 +40,7 @@ export interface IRNStorageSystem {
  *            effects_UNSTABLE: [storageEffect<StateType>('my-state-in-LS')]
  *          })
  */
-export function storageEffect<T>(key: string, storage?: IRNStorageSystem, validator: (data: unknown) => boolean = () => true): AtomEffect<T> {
+export function storageEffect<T>(key: string, storage?: IRNStorageSystem, validator: (data: T) => boolean = () => true): AtomEffect<T> {
   return ({ setSelf, onSet }) => {
     const loadPersisted = async (storageSystem: IRNStorageSystem) => {
       try {
