@@ -118,7 +118,7 @@ async function main() {
 
   process.chdir(tempFolder)
 
-  const publish = spawnAsync(IS_WINDOWS ? 'yarn.cmd' : 'yarn', ['publish', OTP ? `--otp` : '', OTP ? OTP : '', '--tag', newVer])
+  const publish = spawnAsync(IS_WINDOWS ? 'yarn.cmd' : 'yarn', ['publish', OTP ? `--otp` : '', OTP ? OTP : ''])
   ora.promise(publish, 'Publishing package')
   await publish
 
