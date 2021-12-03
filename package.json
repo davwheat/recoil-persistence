@@ -1,6 +1,6 @@
 {
   "name": "recoil-persistence",
-  "version": "0.2.6",
+  "version": "0.3.0-beta.1",
   "private": true,
   "description": "Combines Recoil with persistent storage, such as Browser LocalStorage and React Native async storage.",
   "repository": "https://github.com/davwheat/recoil-persistence",
@@ -16,28 +16,29 @@
   },
   "devDependencies": {
     "@expo/spawn-async": "^1.5.0",
-    "@react-native-async-storage/async-storage": "^1.15.4",
-    "@types/node": "^15.6.0",
-    "@types/react": "^17.0.6",
-    "@types/react-native": "^0.64.5",
-    "chalk": "^4.1.1",
+    "@react-native-async-storage/async-storage": "^1.15.14",
+    "@types/node": "^16.11.11",
+    "@types/react": "^17.0.37",
+    "@types/react-native": "^0.66.6",
+    "chalk": "^5.0.0",
     "cross-env": "^7.0.3",
     "fs-extra": "^10.0.0",
-    "ora": "^5.4.0",
-    "prettier": "^2.3.0",
+    "ora": "^6.0.1",
+    "prettier": "^2.5.0",
     "prompt-sync": "^4.2.0",
     "react": "^17.0.2",
-    "react-native": "^0.64.1",
-    "recoil": "^0.3.1",
+    "react-native": "^0.66.3",
+    "recoil": "^0.5.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4"
+    "typescript": "^4.5.2"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0",
-    "react-native": "^0.63.0 || ^0.64.0",
-    "recoil": "^0.2.0 || ^0.3.0"
+    "react-native": "^0.63.0 || ^0.64.0 || ^0.65.0 || ^0.66.0",
+    "recoil": "^0.5.0"
   },
   "optionalDependencies": {
     "@react-native-async-storage/async-storage": "^1.15.0"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
