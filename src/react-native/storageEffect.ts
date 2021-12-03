@@ -41,36 +41,38 @@ export interface IRNStorageSystem {
  *          })
  */
 export function storageEffect<T>(key: string, storage?: IRNStorageSystem, validator: (data: T) => boolean = () => true): AtomEffect<T> {
-  return ({ setSelf, onSet }) => {
-    const loadPersisted = async (storageSystem: IRNStorageSystem) => {
-      try {
-        const savedValue = await storageSystem.getItem(key)
+  return ({ setSelf, onSet, trigger }) => {
+    if (trigger === 'get') {
+      const loadPersisted = async (storageSystem: IRNStorageSystem) => {
+        try {
+          const savedValue = await storageSystem.getItem(key)
 
-        if (savedValue !== null) {
-          const data = JSON.parse(savedValue)
+          if (savedValue !== null) {
+            const data = JSON.parse(savedValue)
 
-          if (validator(data)) {
-            setSelf(data)
+            if (validator(data)) {
+              setSelf(data)
+            }
           }
+        } catch (e) {
+          console.error('Failed to read persisted data.', e)
         }
-      } catch (e) {
-        console.error('Failed to read persisted data.', e)
       }
-    }
 
-    if (storage) {
-      loadPersisted(storage)
-    } else {
-      import('@react-native-async-storage/async-storage')
-        .then(asyncStorage => {
-          loadPersisted(asyncStorage.default as IRNStorageSystem)
-        })
-        .catch(e => {
-          console.error(
-            "Looks like you didn't pass a storage system to storageEffect or persistentAtom. You either need to pass one, or install `@react-native-async-storage/async-storage`.",
-          )
-          console.error(e)
-        })
+      if (storage) {
+        loadPersisted(storage)
+      } else {
+        import('@react-native-async-storage/async-storage')
+          .then(asyncStorage => {
+            loadPersisted(asyncStorage.default as IRNStorageSystem)
+          })
+          .catch(e => {
+            console.error(
+              "Looks like you didn't pass a storage system to storageEffect or persistentAtom. You either need to pass one, or install `@react-native-async-storage/async-storage`.",
+            )
+            console.error(e)
+          })
+      }
     }
 
     onSet((newValue: T) => {

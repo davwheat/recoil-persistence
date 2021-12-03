@@ -25,22 +25,26 @@ export function storageEffect<T>(
   storage: Storage | undefined = isSSR() ? undefined : localStorage,
   validator: (data: T) => boolean = () => true,
 ): AtomEffect<T> {
-  return ({ setSelf, onSet }) => {
-    const savedValue = storage ? storage.getItem(key) : null
+  return ({ setSelf, onSet, trigger }) => {
+    if (trigger === 'get') {
+      const savedValue = storage ? storage.getItem(key) : null
 
-    if (savedValue !== null) {
-      try {
-        const data = JSON.parse(savedValue)
+      if (savedValue !== null) {
+        try {
+          const data = JSON.parse(savedValue)
 
-        if (validator(data)) {
-          setSelf(data)
+          if (validator(data)) {
+            setSelf(data)
+          } else {
+            console.warn('Persisted recoil state does not pass validation.')
+          }
+        } catch (e) {
+          console.warn('Persisted recoil state is invalid JSON.')
         }
-      } catch (e) {
-        // Value in storage is invalid
       }
     }
 
-    onSet((newValue: T) => {
+    onSet(async (newValue: T) => {
       if (newValue instanceof DefaultValue) {
         storage && storage.removeItem(key)
       } else {
